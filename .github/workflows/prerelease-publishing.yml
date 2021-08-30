@@ -1,0 +1,71 @@
+name: NPM Package Prerelease
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  detect_changes:
+    name: Detect changes within packages
+    runs-on: ubuntu-18.04
+
+    outputs:
+      changed_projects: ${{ steps.filter.outputs.changes }}
+
+    steps:
+      - name: Paths Changes Filter
+        id: filter
+        uses: dorny/paths-filter@v2.9.3
+        with:
+          filters: |
+            npm-package:
+              - 'packages/npm-package/**'
+
+  build_and_prerelease:
+    needs: detect_changes
+    name: Prerelease NPM Packages
+    runs-on: ubuntu-18.04
+    if: needs.detect_changes.outputs.changed_projects != '[]'
+
+    strategy:
+      matrix:
+        node-version: [14.17.0]
+        project: ${{ fromJson(needs.detect_changes.outputs.changed_projects) }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Authenticate with Registry
+        run: |
+          echo "@xenyal:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Lerna Project
+        working-directory: '.'
+        run: |
+          npm install
+          npx lerna bootstrap
+
+      - name: Add SHORT_SHA env property using commit SHA
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+
+      - name: Publish Lerna Prerelease Packages
+        working-directory: ./projects/${{ matrix.project }}
+        run: |
+          git reset --hard
+          git config user.name "github-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          npx lerna publish from-package --yes --conventional-commits --conventional-prerelease --pre-dist-tag next --preid=alpha.${{github.event.number}}.${{ steps.vars.outputs.sha_short }}
+
