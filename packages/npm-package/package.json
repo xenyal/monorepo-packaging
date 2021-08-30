@@ -5,6 +5,10 @@
   "author": "Vincent Li <vinceliii2011@gmail.com>",
   "homepage": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xenyal/monorepo-packaging"
+  },
   "main": "lib/npm-package.js",
   "directories": {
     "lib": "lib",
@@ -15,5 +19,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/xenyal" 
   }
 }

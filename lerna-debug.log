@@ -1,0 +1,21 @@
+0 silly argv {
+0 silly argv   _: [ 'publish' ],
+0 silly argv   composed: 'publish',
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': 'lerna',
+0 silly argv   bump: 'from-package'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/vincent/code/monorepo-packaging
+3 info versioning independent
+4 error JSONError: Unexpected token "}" (0x7D) in JSON at position 467 while parsing near "....github.com/\" \n  },\n}\n" in packages/npm-package/package.json
+4 error
+4 error [0m [90m 20 |[39m     [32m"registry"[39m[33m:[39m [32m"https://npm.pkg.github.com/"[39m [0m
+4 error [0m [90m 21 |[39m   }[33m,[39m[0m
+4 error [0m[31m[1m>[22m[39m[90m 22 |[39m }[0m
+4 error [0m [90m    |[39m [31m[1m^[22m[39m[0m
+4 error [0m [90m 23 |[39m[0m
+4 error
+4 error     at parseJson (/Users/vincent/.nvm/versions/node/v14.16.1/lib/node_modules/lerna/node_modules/parse-json/index.js:29:21)
+4 error     at parse (/Users/vincent/.nvm/versions/node/v14.16.1/lib/node_modules/lerna/node_modules/load-json-file/index.js:15:9)
+4 error     at module.exports (/Users/vincent/.nvm/versions/node/v14.16.1/lib/node_modules/lerna/node_modules/load-json-file/index.js:18:47)
