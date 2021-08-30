@@ -1,6 +1,6 @@
 {
   "name": "@xenyal/npm-package",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "Vincent Li <vinceliii2011@gmail.com>",
   "homepage": "",
@@ -20,7 +20,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "publishConfig": { 
-    "registry": "https://npm.pkg.github.com/xenyal" 
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/xenyal"
   }
 }
