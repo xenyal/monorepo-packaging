@@ -1,7 +1,10 @@
 import logo from './logo.svg';
+import stripSpace from '@xenyal/npm-package';
 import './App.css';
 
 function App() {
+  console.log(stripSpace("NPM Package: Ha Ha Ha!"));
+
   return (
     <div className="App">
       <header className="App-header">
