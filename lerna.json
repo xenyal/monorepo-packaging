@@ -1,7 +1,17 @@
 {
+  "npmClient": "npm",
   "packages": [
     "apps/*",
     "packages/*"
   ],
-  "version": "0.0.1"
+  "version": "independent",
+  "command": {
+    "publish": {
+      "registry": "https://npm.pkg.github.com",
+      "ignoreChanges": [
+        "**/*.md",
+        "**/test/**"
+      ]
+    }
+  }
 }
