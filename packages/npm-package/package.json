@@ -1,0 +1,19 @@
+{
+  "name": "@xenyal/npm-package",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Vincent Li <vinceliii2011@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/npm-package.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
