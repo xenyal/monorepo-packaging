@@ -1,12 +1,12 @@
 {
   "name": "webapp",
-  "version": "0.0.3-alpha.1.3134bc0.0",
+  "version": "0.0.3-alpha.3.cf306f4.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "@xenyal/npm-package": "^0.0.3-alpha.1.3134bc0.0",
+    "@xenyal/npm-package": "^0.0.3-alpha.3.cf306f4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
