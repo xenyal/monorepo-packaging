@@ -67,5 +67,5 @@ jobs:
           git reset --hard
           git config user.name "github-actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          npx lerna publish --yes --conventional-commits --conventional-prerelease --pre-dist-tag next --preid=alpha.${{github.event.number}}.${{ steps.vars.outputs.sha_short }}
+          npx lerna publish --yes --conventional-commits --conventional-prerelease --pre-dist-tag next --preid=alpha.${{github.event.number}}.${{ steps.vars.outputs.sha_short }}  --no-private --no-git-tag-version
 
